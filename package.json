@@ -1,0 +1,26 @@
+{
+  "name": "koa2_movie",
+  "version": "1.0.0",
+  "description": "koa2开发的豆瓣电影网站",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"nodemon src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Duanzihuang/koa2_movie.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Duanzihuang/koa2_movie/issues"
+  },
+  "homepage": "https://github.com/Duanzihuang/koa2_movie#readme",
+  "dependencies": {
+    "koa": "^2.6.2",
+    "koa-views": "^6.1.4",
+    "pug": "^2.0.3"
+  }
+}

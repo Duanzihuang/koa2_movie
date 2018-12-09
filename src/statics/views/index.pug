@@ -1,0 +1,86 @@
+extends ./layouts/default
+
+block title
+    title 豆瓣首页
+
+block content
+  include ./includes/header
+  //响应式框架
+  .container-fluid
+    .row
+      include ./includes/sidebar
+      .col-12.col-md-10.col-xl-10.py-md-3.pl-md-5.content
+        .content
+          .row
+            .col-md-6
+              .card
+                img.card-img-top(src='https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2539661066.webp' width="115" height="366" data-video='http://127.0.0.1:5566/test.mp4')
+                .card-body
+                  h4.card-title 这是电影标题
+                  p.card-desc 这是电影描述
+                .card-footer
+                  small.text-muted 1天前更新
+            .col-md-6
+              .card
+                img.card-img-top(src='https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2539661066.webp' data-video='http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4' width="115" height="366")
+                .card-body
+                  h4.card-title 这是电影标题
+                  p.card-desc 这是电影描述
+                .card-footer
+                  small.text-muted 1天前更新
+          .row
+            .col-md-6
+              .card
+                img.card-img-top(src='https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2539661066.webp' data-video='http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4' width="115" height="366")
+                .card-body
+                  h4.card-title 这是电影标题
+                  p.card-desc 这是电影描述
+                .card-footer
+                  small.text-muted 1天前更新
+            .col-md-6
+              .card
+                img.card-img-top(src='https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2539661066.webp' data-video='http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4' width="115" height="366")
+                .card-body
+                  h4.card-title 这是电影标题
+                  p.card-desc 这是电影描述
+                .card-footer
+                  small.text-muted 1天前更新
+
+  #myModal.modal.fade.bd-example-modal-lg(tabindex="-1",role="dialog",aria-labelledby="myLargeModalLabel",aria-hidden="true")
+    .modal-dialog.modal-lg
+      #videoModal.modal-content
+
+  include ./includes/script
+
+  script.
+    var player = null
+    $(document).ready(function(){
+      $('#myModel').on('hidden.bs.modal',function(e){
+        if(player && player.pause) player.pause()
+      })
+
+      $('.card-img-top').click(function(e){
+        var videoURL = $(this).data('video')
+        var imgURL = $(this).attr('src')
+        console.log(videoURL)
+        if(!player){
+          player = new DPlayer({
+            container:document.getElementById('videoModal'),
+            screenshot:true,
+            video:{
+              url:videoURL,
+              pic:imgURL,
+              thumbnails:imgURL
+            }
+          })
+        }else{
+          if(play.video.currentSrc !== videoURL){
+            player.switchVideo({
+              url:videoURL,
+              pic:imgURL,
+              type:'auto'
+            })
+          }
+        }
+      })
+    })
